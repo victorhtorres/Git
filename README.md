@@ -2,6 +2,8 @@
 
 Referencias rápidas de Git.
 
+Para aprender a usar git desde cero, visita la documentación oficial en español [aquí](https://git-scm.com/book/es/v2)
+
 ## Contenido
 
 - [Estados de los archivos en Git.](#Estados-de-los-archivos-en-Git)
@@ -41,7 +43,8 @@ Referencias rápidas de Git.
     - [Otras opciones para las etiquetas.](#Otras-opciones-para-las-etiquetas)
         - [Listar etiquetas creadas.](#Listar-etiquetas-creadas)
         - [Etiquetar commit pasados.](#Etiquetar-commit-pasados)
-        - [Borra una etiqueta.](#Borra-una-etiqueta)
+        - [Borrar una etiqueta.](#Borrar-una-etiqueta)
+        - [Renombrar una etiqueta.](#Renombrar-una-etiqueta)
 - [Revisando historial.](#Revisando-historial)
 - [Revisando los cambios entre versiones.](#Revisando-los-cambios-entre-versiones)
 - [Reescribir un commit con una versión anterior.](#Reescribir-un-commit-con-una-versión-anterior)
@@ -179,7 +182,7 @@ Primer, validar el estado del repositorio:
 
 `git status`
 
-Por lo general, al hacer un git status, aparecerán los archivos que han sido modificados en el working area pero que aún no se han pasado al staging area. Lo siguiente es agregar dichos cambios al staging area:
+Lo anterior, indicará cuales son los archivos que han sido modificados en el working area pero que aún no se han pasado al staging area. Lo siguiente es agregar dichos cambios al staging area:
 
 `git add nombre_archivo_agregar`
 
@@ -213,10 +216,6 @@ Para el mensaje del commit, se pone brevemente lo que se está entregando.
     
 `git commit --amend -m "comentario"`
 
-Ver el historial de commit:
-
-`git log`
-
 ## Etiquetando confirmaciones
 
 Se puede colocar una etiqueta a un commit. Normalmente, se utiliza para colocar el número de la versión de entrega.
@@ -243,11 +242,11 @@ Para etiquetar commit pasados, se requiere conocer el sha-1 del commit el cual s
 
 `git tag 0.3 sha-1`
 
-#### Borra una etiqueta
+#### Borrar una etiqueta
 
 `git tag -d 1.0`
 
-*Renombrar una etiqueta*
+#### Renombrar una etiqueta
 
 `git tag -f -a 0.1 -m "comentario del cambio" sha-1`
 
@@ -345,9 +344,12 @@ También se puede usar para moverse entre los commits:
 
 ## Mezclando ramas y resolviendo conflictos
 
-Ubicarse en la rama donde desea realizar merge. Por lo general, será la rama master quien se mezcle con otros commits.
+Ubicarse en la rama donde desea realizar merge. Por lo general, será la rama master quien se mezcle con otros commits:
 
 `git checkout master`
+
+Luego, realiza la mezcla con el nombre de rama ingresada como parámetro:
+
 `git merge nombre_rama`
 
 Cuando la mezcla es de tipo **fast-forward**, es porque la rama que se mezcló, venía de la rama master y no han hecho merge con otra rama.
@@ -358,9 +360,10 @@ Cuando aparecen conflictos, se debe decidir con que versión quedarse o se debe 
 
 ## Reescribe la historia de tu proyecto
 
-Existe otra forma de realizar merge entre ramas, se llama reorganización (rebase), el cual tendrá un comportamiento secuencial, sin bifurcaciones en la linea de tiempo como sucede con el comando git merge. 
+Existe otra forma de realizar merge entre ramas, se llama reorganización (rebase), el cual tendrá un comportamiento secuencial, sin bifurcaciones en la linea de tiempo como sucede con el comando git merge:
 
 `git checkout nombre_rama_a_reorganizar`
+
 `git rebase nombre_rama_a_mezclar`
 
 Al usar rebase, el sha-1 del HEAD cambia. Por lo anterior, se recomienda hacerlo solo en local, porque podría reescribir la historia de todos los que podrían estar contribuyendo con el repositorio de forma remota.
@@ -459,11 +462,11 @@ En GitHub, la opción Proyectos, permite organizar las tareas de un repositorio 
 
 **Columnas básicas en un proyecto**
 
-TODO: Son las cosas por hacer.
-WIP: Work in Progress. En que estamos trabajando.
-Bugs: Cosas que hay que arreglar de manera prioritaria.
-Waiting for review: Sirve cuando se trabaja pulls requests, ya que se espera que alguien revise el codigo.
-Done: Cuando la tarea ha finalizado.
+- TODO: Son las cosas por hacer.
+- WIP: Work in Progress. En que estamos trabajando.
+- Bugs: Cosas que hay que arreglar de manera prioritaria.
+- Waiting for review: Sirve cuando se trabaja pulls requests, ya que se espera que alguien revise el codigo.
+- Done: Cuando la tarea ha finalizado.
 
 ### Creando un template para issues y pull request
 
