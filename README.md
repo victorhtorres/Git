@@ -1,11 +1,11 @@
 # Git
 
-Referencias rápidas de Git.
+Referencias sobre Git.
 
 Para aprender a usar git desde cero, visita la documentación oficial en español [aquí](https://git-scm.com/book/es/v2)
 
 ## Contenido
-
+- [Que es Git](#Que-es-Git).
 - [Estados de los archivos en Git.](#Estados-de-los-archivos-en-Git)
     - [Working Directory.](#Working-Directory)
     - [Staging Area.](#Staging-Area)
@@ -47,6 +47,7 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
         - [Renombrar una etiqueta.](#Renombrar-una-etiqueta)
 - [Revisando historial.](#Revisando-historial)
 - [Revisando los cambios entre versiones.](#Revisando-los-cambios-entre-versiones)
+- [Mostrar los cambios de un archivo](#Mostrar-los-cambios-de-un-archivo).
 - [Reescribir un commit con una versión anterior.](#Reescribir-un-commit-con-una-versión-anterior)
     - [Git reset soft.](#Git-reset-soft)
     - [Git reset mixed.](#Git-reset-mixed)
@@ -85,6 +86,9 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [GitHub Pages hosting gratuito de archivos estáticos.](#GitHub-Pages-hosting-gratuito-de-archivos-estáticos)
     - [Dominios personalizados en GitHub.](#Dominios-personalizados-en-GitHub)
 
+## Que es Git
+
+Git es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente. En su lugar, GitHub es una forja para alojar proyectos utilizando el sistema de control de versiones Git. GitHub sería la red social de código para los programadores, tu propio curriculum vitae.
 
 ## Estados de los archivos en Git
 
@@ -101,6 +105,10 @@ El área de preparación de los archivos que serán registrados en el repositori
 ### Git Repository
 
 El lugar donde se almacena el código de forma segura.
+
+### Gráfica de estados
+
+![Estados de los archivos en git](./images/estados_git.png)
 
 ## Configuración básica para trabajar
 
@@ -188,7 +196,7 @@ Lo anterior, indicará cuales son los archivos que han sido modificados en el wo
 
 ### Devolver un archivo que estaba en staging area al working directory
 
-`git rm --cach nombre_archivo`
+`git rm --cache nombre_archivo`
 
 ### Enviar todos los archivos que están en el working directory a staging area
 
@@ -284,6 +292,14 @@ Nota: Tener en cuenta el orden de los parámetros:
 
 `git diff version_1 version_2`
 
+Nota: Es recomendable colocar el commit más viejo de primero, seguido del commit más reciente. Lo anterior, da más claridad de los cambios que tuvo el archivo entre dos versiones.
+
+## Mostrar los cambios de un archivo
+
+Muestra cuales fueron los cambios realizados entre el último commit y el commit anterior de un archivo:
+
+`git show nombre_archivo`
+
 ## Reescribir un commit con una versión anterior
 
 Advertencia: Con este comando puedes perder cosas de tu proyecto.
@@ -337,6 +353,10 @@ Para recuperar todo, se ingresa el commit el cual tiene los cambios que reestabl
 También se puede usar para moverse entre los commits:
 
 `git checkout sha-1`
+
+Para volver a la última versión de un archivo:
+
+`git checkout master nombre_archivo`
 
 ### Crear una rama y navegar en ella
 
