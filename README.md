@@ -45,6 +45,8 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
         - [Etiquetar commit pasados.](#Etiquetar-commit-pasados)
         - [Borrar una etiqueta.](#Borrar-una-etiqueta)
         - [Renombrar una etiqueta.](#Renombrar-una-etiqueta)
+        - [Listar los commits con sus respectivas etiquetas.](#Listar-los-commits-con-sus-respectivas-etiquetas)
+        - [Enviar las etiquetas al repositorio remoto.](#Enviar-las-etiquetas-al-repositorio-remoto)
 - [Revisando historial.](#Revisando-historial)
 - [Revisando los cambios entre versiones.](#Revisando-los-cambios-entre-versiones)
 - [Mostrar los cambios de un archivo](#Mostrar-los-cambios-de-un-archivo).
@@ -59,6 +61,8 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Renombrar una rama.](#Renombrar-una-rama)
     - [Moverse entre ramas.](#Moverse-entre-ramas)
     - [Crear una rama y navegar en ella.](#Crear-una-rama-y-navegar-en-ella)
+    - [Listar las ramas existentes y su historia.](#Listar-las-ramas-existentes-y-su-historia)
+    - [Mostrar la historia de ramas en una GUI.](#Mostrar-la-historia-de-ramas-en-una-GUI)
 - [Mezclando ramas y resolviendo conflictos.](#Mezclando-ramas-y-resolviendo-conflictos)
 - [Reescribe la historia de tu proyecto.](#Reescribe-la-historia-de-tu-proyecto)
 - [Guardando cambios temporales.](#Guardando-cambios-temporales)
@@ -71,6 +75,7 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Añadiendo una llave ssh a GitHub.](#Añadiendo-una-llave-ssh-a-GitHub)
     - [Añadiendo un repositorio remoto a uno local.](#Añadiendo-un-repositorio-remoto-a-uno-local)
         - [Listar las conexiones existentes.](#Listar-las-conexiones-existentes)
+        - [Modificar las conexiones existentes.](#Modificar-las-conexiones-existentes)
         - [Eliminar una conexión con algún repositorio.](#Eliminar-una-conexión-con-algún-repositorio)
         - [Traer los archivos que tenga el repositorio remoto al local.](#Traer-los-archivos-que-tenga-el-repositorio-remoto-al-local)
         - [Hacer merge con la rama creada por el fetch y la rama master del local.](#Hacer-merge-con-la-rama-creada-por-el-fetch-y-la-rama-master-del-local)
@@ -254,9 +259,21 @@ Para etiquetar commit pasados, se requiere conocer el sha-1 del commit el cual s
 
 `git tag -d 1.0`
 
+Para que el borrado haga efecto en el repositorio remoto:
+
+`git push origin :refs/tags/[nombre_tag_a_borrar]`
+
 #### Renombrar una etiqueta
 
 `git tag -f -a 0.1 -m "comentario del cambio" sha-1`
+
+#### Listar los commits con sus respectivas etiquetas
+
+`git show-ref --tags`
+
+#### Enviar las etiquetas al repositorio remoto
+
+`git push origin --tags`
 
 ## Revisando historial
 
@@ -362,6 +379,18 @@ Para volver a la última versión de un archivo:
 
 `git checkout -b nombre_rama`
 
+### Listar las ramas existentes y su historia
+
+`git show-branch`
+
+Para mostrar más información en la historia de las ramas:
+
+`git show-branch --all`
+
+### Mostrar la historia de ramas en una GUI
+
+`gitk`
+
 ## Mezclando ramas y resolviendo conflictos
 
 Ubicarse en la rama donde desea realizar merge. Por lo general, será la rama master quien se mezcle con otros commits:
@@ -428,6 +457,14 @@ Crear la llave:
 
 `ssh-keygen -t rsa -b 4096 -C "correo_registro_en_GitHub"`
 
+Verificar que el programa que permite la doble comunicación con GitHub, esté encendido:
+
+`eval $(ssh-agent -s)`
+
+Agregar la llave privada ssh para ser reconocida en el sistema:
+
+`ssh-add [ruta_llave_privada]`
+
 Copiar la llave creada:
 
 `cat ~/.ssh/id_rsa.pub`
@@ -447,6 +484,10 @@ Nota: La palabra origin significa el nombre del repositorio remoto y se llama as
 #### Listar las conexiones existentes
 
 `git remote -v`
+
+#### Modificar las conexiones existentes
+
+`git remote set-url origin [url_or_ssh_project]`
 
 #### Eliminar una conexión con algún repositorio
 
