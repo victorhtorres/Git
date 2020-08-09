@@ -90,6 +90,7 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Reportando y monitoreando errores eficientemente.](#Reportando-y-monitoreando-errores-eficientemente)
     - [GitHub Pages hosting gratuito de archivos estáticos.](#GitHub-Pages-hosting-gratuito-de-archivos-estáticos)
     - [Dominios personalizados en GitHub.](#Dominios-personalizados-en-GitHub)
+    - [Haciendo deployment a un servidor.](#Haciendo-deployment-a-un-servidor)
 
 ## Que es Git
 
@@ -485,6 +486,14 @@ Nota: La palabra origin significa el nombre del repositorio remoto y se llama as
 
 `git remote -v`
 
+#### Agregar una conexión
+
+`git remote add [nombre_conexion] [url_repositorio]`
+
+Si se agrega una conexión con un repositorio que no es propio, es común llamarlo `upstream`. 
+
+Tener conexiones con los repositorios que le hacemos Fork en GitHub, nos permite en local realizar pull al repositorio real y traer lo más reciente que tenga.
+
 #### Modificar las conexiones existentes
 
 `git remote set-url origin [url_or_ssh_project]`
@@ -576,3 +585,15 @@ En settings, en la opción GitHub pages, configurar el dominio personalizado. Pe
 También, se requiere configurar del lado de la gestión de dominio, los CNAMES y records del dominio, para que apunte al repositorio en GitHub y esto varia con base al proveedor de dominios.
 
 Más información [aquí](https://help.GitHub.com/en/articles/using-a-custom-domain-with-GitHub-pages)
+
+### Haciendo deployment a un servidor
+
+Teniendo un servidor linux, simplemente podemos clonar nuestro proyecto de GitHub en la carpeta `/var/www` de nuestro servidor. Por cada actualización que realicen en el repositorio, se deberá hacer pull al origen desde nuestro servidor.
+
+Lo anterior, no es la mejor opción, ya que la carpeta `.git` quedará expuesta en nuestro servidor, por lo tanto, también toda la base de datos de los commits del proyecto. Se debe proteger la carpeta del historial de git, dependiendo de que servidor se está usando.
+
+Para hacer deploy, se recomienda implementar la [integración continua](https://es.wikipedia.org/wiki/Integraci%C3%B3n_continua). Algunos software para la implementación de integración continua:
+
+- [Travis CI](https://travis-ci.com/plans).
+- [Jenkins](https://www.jenkins.io/).
+
