@@ -69,6 +69,7 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Listar los stash de una rama.](#Listar-los-stash-de-una-rama)
     - [Borra un stash](#Borra-un-stash)
     - [Aplicar el guardado temporal.](#Aplicar-el-guardado-temporal)
+    - [Aplicar el guardado en otra rama.](#Aplicar-el-guardado-en-otra-rama)
 - [Cherry pick eligiendo commits selectivamente.](#Cherry-pick-eligiendo-commits-selectivamente)
 - [GitHub.](#GitHub)
     - [Clonando repositorios remotos.](#Clonando-repositorios-remotos)
@@ -418,11 +419,33 @@ Existe otra forma de realizar merge entre ramas, se llama reorganización (rebas
 
 Al usar rebase, el sha-1 del HEAD cambia. Por lo anterior, se recomienda hacerlo solo en local, porque podría reescribir la historia de todos los que podrían estar contribuyendo con el repositorio de forma remota.
 
+**Recomendación**
+
+Para evitar mayores conflictos cuando quiere reescribir la historia desde la rama master, primero debería hacer rebase en la rama donde está sucediendo los cambios y luego rebase desde la rama master. Ejemplo:
+
+Se ubica en la rama donde se realizará los cambios:
+
+`git checkout [mi_rama_experimental]`
+
+Luego de hacer commit a los cambios, realiza rebase para traer la historia de la rama master:
+
+`git rebase master`
+
+Volver a la rama master:
+
+`git checkout master`
+
+Hacer nuevamente rebase pero ahora desde la rama master con la rama donde se hizo el primer rebase:
+
+`git rebase [mi_rama_experimental]`
+
 ## Guardando cambios temporales
 
 Es un estado intermedio entre un git add y git commit. La idea es guardar temporalmente los cambios agregados al repositorio pero sin confirmarlos:
 
 `git stash` 
+
+También, es muy útil para hacer experimentos y deshacer todo los cambios de forma rápida.
 
 ### Listar los stash de una rama
 
@@ -435,6 +458,14 @@ Es un estado intermedio entre un git add y git commit. La idea es guardar tempor
 ### Aplicar el guardado temporal
 
 `git stash apply nombre_stash`
+
+Otra forma:
+
+`git stash pop`
+
+### Aplicar el guardado en otra rama
+
+`git stash branch [nombre_rama]`
 
 ## Cherry pick eligiendo commits selectivamente
 
@@ -576,7 +607,9 @@ Milestones: Forma para agrupar Issues o Pull Request.
 
 Ir a settings > GitHub Pages y eliges la rama gh-pages o master y guardas. Ya tendras tu pagina subida a un hosting gratuito de GitHub.
 
-Nota: Solo se permite páginas estáticas.
+- Para que el repositorio cargue en la url raíz, se debe cambiar el nombre del repositorio por: nombre-repositorio.github.io
+- Se debe tener un index.html en la raíz del proyecto.
+- Solo se permite páginas estáticas.
 
 ### Dominios personalizados en GitHub
 
