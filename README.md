@@ -53,7 +53,8 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
 - [Reescribir un commit con una versión anterior.](#Reescribir-un-commit-con-una-versión-anterior)
     - [Git reset soft.](#Git-reset-soft)
     - [Git reset mixed.](#Git-reset-mixed)
-    - [Git reset hard.](#Git-reset-hard)    
+    - [Git reset hard.](#Git-reset-hard)
+- [Consultar todas las acciones realizadas en un repositorio.](#Consultar-todas-las-acciones-realizadas-en-un-repositorio)
 - [Múltiples variantes del repositorio.](#Múltiples-variantes-del-repositorio)
     - [Crear una rama.](#Crear-una-rama)
     - [Listar las ramas creadas.](#Listar-las-ramas-creadas)
@@ -70,7 +71,9 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Borra un stash](#Borra-un-stash)
     - [Aplicar el guardado temporal.](#Aplicar-el-guardado-temporal)
     - [Aplicar el guardado en otra rama.](#Aplicar-el-guardado-en-otra-rama)
+- [Limpiar tu proyecto de archivos no deseados.](#Limpiar-tu-proyecto-de-archivos-no-deseados)
 - [Cherry pick eligiendo commits selectivamente.](#Cherry-pick-eligiendo-commits-selectivamente)
+- [Buscar palabras en archivos.](#Buscar-palabras-en-archivos)
 - [GitHub.](#GitHub)
     - [Clonando repositorios remotos.](#Clonando-repositorios-remotos)
     - [Añadiendo una llave ssh a GitHub.](#Añadiendo-una-llave-ssh-a-GitHub)
@@ -231,6 +234,8 @@ Para el mensaje del commit, se pone brevemente lo que se está entregando.
     
 `git commit --amend -m "comentario"`
 
+Lo anterior, no solo cambia el mensaje del commit, también puede fusionar un commit que se piensa hacer con el último commit registrado en el repositorio (remendar commits).
+
 ## Etiquetando confirmaciones
 
 Se puede colocar una etiqueta a un commit. Normalmente, se utiliza para colocar el número de la versión de entrega.
@@ -295,6 +300,10 @@ Mostrar el histórico del último commit:
 
 `git log -1`
 
+Buscar una palabra en el histórico:
+
+`git log -S "[palabra_buscar]"`
+
 ## Revisando los cambios entre versiones
 
 Muestra las diferencias entre el commit actual contra el sha-1 del commit ingresado:
@@ -346,6 +355,12 @@ Regresa hasta el commit del sha-1 ingresado. Borra todo, incluyendo lo que está
 `git reset --hard sha-1`
 
 Para recuperar todo, se ingresa el commit el cual tiene los cambios que reestablezca todo lo borrado con reset hard.
+
+## Consultar todas las acciones realizadas en un repositorio
+
+`git reflog`
+
+Lo anterior, permite conocer el sha-1 de una acción, como un commit, y tener la opción de poder deshacer un cambio no deseado en el tiempo.
 
 ## Múltiples variantes del repositorio
 
@@ -467,11 +482,41 @@ Otra forma:
 
 `git stash branch [nombre_rama]`
 
+## Limpiar tu proyecto de archivos no deseados
+
+A veces creamos archivos cuando estamos realizando nuestro proyecto que realmente no forman parte de nuestro directorio de trabajo, que no se deberían agregar y lo sabemos.
+
+Para saber qué archivos vamos a borrar:
+
+`git clean --dry-run`
+
+Para borrar todos los archivos listados (que no son carpetas):
+
+`git clean -f`
+
 ## Cherry pick eligiendo commits selectivamente
 
 Se debe ubicar en la rama donde se quiere agregar el commit que estaría en otra rama, por medio de su sha-1:
 
 `git cherry-pick sha-1`
+
+Lo anterior, trae los cambios del commit ingresado a la rama donde se esté ubicado.
+
+## Buscar palabras en archivos
+
+`git grep [palabra_buscar]`
+
+Indicar en que linea del archivo está la palabra encontrada:
+
+`git grep -n [palabra_buscar]`
+
+Cuántas veces se repite esa palabra y en qué archivo:
+
+`git grep -c [palabra_buscar]`
+
+Si queremos buscar cuántas veces utilizamos un atributo de HTML: 
+
+`git grep -c ["[atributo_html]"]`
 
 ## GitHub
 
