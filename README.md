@@ -74,6 +74,7 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
 - [Limpiar tu proyecto de archivos no deseados.](#Limpiar-tu-proyecto-de-archivos-no-deseados)
 - [Cherry pick eligiendo commits selectivamente.](#Cherry-pick-eligiendo-commits-selectivamente)
 - [Buscar palabras en archivos.](#Buscar-palabras-en-archivos)
+- [Ver log agrupado por autores.](#Ver-log-agrupado-por-autores)
 - [GitHub.](#GitHub)
     - [Clonando repositorios remotos.](#Clonando-repositorios-remotos)
     - [Añadiendo una llave ssh a GitHub.](#Añadiendo-una-llave-ssh-a-GitHub)
@@ -517,6 +518,22 @@ Cuántas veces se repite esa palabra y en qué archivo:
 Si queremos buscar cuántas veces utilizamos un atributo de HTML: 
 
 `git grep -c ["[atributo_html]"]`
+
+## Ver log agrupado por autores
+
+`git shortlog`
+
+Muestra el número de commits agrupados por autor:
+
+`git shortlog -sn`
+
+Muestra el número de commits agrupados por autor, incluyendo los commits que fueron borrados:
+
+`git shortlog -sn --all`
+
+No incluir los merges:
+
+`git shortlog -sn --all --no-merges`
 
 ## GitHub
 
