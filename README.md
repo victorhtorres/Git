@@ -64,6 +64,8 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
     - [Crear una rama y navegar en ella.](#Crear-una-rama-y-navegar-en-ella)
     - [Listar las ramas existentes y su historia.](#Listar-las-ramas-existentes-y-su-historia)
     - [Mostrar la historia de ramas en una GUI.](#Mostrar-la-historia-de-ramas-en-una-GUI)
+    - [Listar las ramas del repositorio remoto.](#Listar-las-ramas-del-repositorio-remoto)
+    - [Listar las ramas locales y remotas.](#Listar-las-ramas-locales-y-remotas)
 - [Mezclando ramas y resolviendo conflictos.](#Mezclando-ramas-y-resolviendo-conflictos)
 - [Reescribe la historia de tu proyecto.](#Reescribe-la-historia-de-tu-proyecto)
 - [Guardando cambios temporales.](#Guardando-cambios-temporales)
@@ -75,6 +77,8 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
 - [Cherry pick eligiendo commits selectivamente.](#Cherry-pick-eligiendo-commits-selectivamente)
 - [Buscar palabras en archivos.](#Buscar-palabras-en-archivos)
 - [Ver log agrupado por autores.](#Ver-log-agrupado-por-autores)
+- [Crear un alias para ejecutar en el entorno de Git](#Crear-un-alias-para-ejecutar-en-el-entorno-de-Git)
+- [Ver quien hizo que](#Ver-quien-hizo-que)
 - [GitHub.](#GitHub)
     - [Clonando repositorios remotos.](#Clonando-repositorios-remotos)
     - [Añadiendo una llave ssh a GitHub.](#Añadiendo-una-llave-ssh-a-GitHub)
@@ -409,6 +413,14 @@ Para mostrar más información en la historia de las ramas:
 
 `gitk`
 
+### Listar las ramas del repositorio remoto
+
+`git branch -r`
+
+### Listar las ramas locales y remotas
+
+`git branch -a`
+
 ## Mezclando ramas y resolviendo conflictos
 
 Ubicarse en la rama donde desea realizar merge. Por lo general, será la rama master quien se mezcle con otros commits:
@@ -534,6 +546,26 @@ Muestra el número de commits agrupados por autor, incluyendo los commits que fu
 No incluir los merges:
 
 `git shortlog -sn --all --no-merges`
+
+## Crear un alias para ejecutar en el entorno de Git
+
+`git config --global alias.[nombre_nuevo_comando] "[comando_a_ejecutar]"`
+
+Ejemplo:
+
+`git config --global alias.stats "shortlog -sn --all --no-merges"`
+
+## Ver quien hizo que
+
+`git blame [nombre_archivo]`
+
+Para mejorar la identación del código del archivo:
+
+`git blame -c [nombre_archivo]`
+
+Mostrar del archivo, solo el rango de lineas definido:
+
+`git blame -c [nombre_archivo] -L[##],[##]`
 
 ## GitHub
 
