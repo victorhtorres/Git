@@ -309,6 +309,10 @@ Buscar una palabra en el histórico:
 
 `git log -S "[palabra_buscar]"`
 
+Formatear la salida del log, ejemplo:
+
+`git log --graph --abbrev-commit --decorate --pretty=tformat:'%C(bold blue)%h%Creset - %C(bold green)(%ar)%Creset %C(bold white)%s%Creset - %C(bold red)%an%Creset%C(bold yellow)%d%Creset'`
+
 ## Revisando los cambios entre versiones
 
 Muestra las diferencias entre el commit actual contra el sha-1 del commit ingresado:
