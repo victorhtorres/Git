@@ -17,14 +17,6 @@ Para aprender a usar git desde cero, visita la documentación oficial en españo
         - [Configurar Visual Studio Code.](#Configurar-Visual-Studio-Code)
     - [Activar los colores en la terminal para Git.](#Activar-los-colores-en-la-terminal-para-Git)
     - [Más opciones de configuración.](#Más-opciones-de-configuración)
-- [Comandos básicos de la terminal.](#Comandos-básicos-de-la-terminal)
-    - [Navegación entre directorios.](#Navegación-entre-directorios)
-    - [Crea una carpeta.](#Crea-una-carpeta)
-    - [Listar contenido de un directorio.](#Listar-contenido-de-un-directorio)
-    - [Limpia la terminal.](#Limpia-la-terminal)
-    - [Crear archivos.](#Crear-archivos)
-    - [Eliminar un archivo.](#Eliminar-un-archivo)
-    - [Eliminar carpeta de forma recursiva.](#Eliminar-carpeta-de-forma-recursiva)
 - [Creando un repositorio.](#Creando-un-repositorio)
     - [Iniciando un repositorio en un proyecto existente.](#Iniciando-un-repositorio-en-un-proyecto-existente)
     - [Iniciando un repositorio en un nuevo directorio.](#Iniciando-un-repositorio-en-un-nuevo-directorio)
@@ -152,36 +144,6 @@ Datos básicos para configurar:
 ### Más opciones de configuración
 
 Todas las opciones de configuración [aquí](https://git-scm.com/docs/git-config).
-
-## Comandos básicos de la terminal
-
-### Navegación entre directorios
-
-`cd ruta`
-
-### Crea una carpeta
-
-`mkdir nombre_carpeta`
-
-### Listar contenido de un directorio
-
-`ls`
-
-### Limpia la terminal
-
-`clear`
-
-### Crear archivos
-
-`touch nombre_archivo`
-
-### Eliminar un archivo
-
-`rm nombre_archivo_a_eliminar`
-
-### Eliminar carpeta de forma recursiva
-
-`rm -rf nombre_carpeta`
 
 ## Creando un repositorio
 
